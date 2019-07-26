@@ -146,6 +146,7 @@ class Subscribe: NSObject{
             for index in 0..<maxN {
                 if let profileDict = ParseAppURLSchemes(URL(string: urls[index])) {
                     let profile = ServerProfile.fromDictionary(profileDict as [String : AnyObject])
+                    profile.ssrGroup = self.groupName;
                     let (dupResult, _) = self.profileMgr.isDuplicated(profile: profile)
                     let (existResult, existIndex) = self.profileMgr.isExisted(profile: profile)
                     if dupResult {
